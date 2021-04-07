@@ -113,7 +113,7 @@ function createEngineer() {
 
   // intern
 
-  function addIntern() {
+  function createIntern() {
     inquirer.prompt([
       {
         type: "input",
@@ -149,7 +149,7 @@ function createEngineer() {
 
   // manager
 
-  function addManager() {
+  function createManager() {
     inquirer.prompt([
       {
         type: "input",
@@ -190,7 +190,7 @@ function createEngineer() {
 
     fs.writeFile(outputPath, finishedTeam, "utf8", (err) => {
         if (err) throw err;
-        console.log('The file has been saved!');
+        console.log('Your team has been saved!');
     });
   }
 
