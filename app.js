@@ -99,10 +99,10 @@ function createEngineer() {
     ]).then(userChoice => {
       switch (userChoice.memberChoice) {
         case "Manager":
-          addManager();
+          createManager();
           break;
         case "Intern":
-          addIntern();
+          createIntern();
           break;
         default:
           makeTeam();
