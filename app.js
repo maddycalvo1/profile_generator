@@ -6,7 +6,7 @@ const path = require("path");
 const fs = require("fs");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
-const outputPath = path.join(OUTPUT_DIR, "team.html");
+const outputPath = path.join(OUTPUT_DIR, "output.html");
 
 const render = require("./lib/htmlRenderer");
 
@@ -181,38 +181,20 @@ function createEngineer() {
       teamID.push(answers.managerId);
       generateTeam();
     });
+
   }
 
-
   function makeTeam() {
-    // Create the output directory if the output path doesn't exist
-    if (!fs.existsSync(OUTPUT_DIR)) {
-      fs.mkdirSync(OUTPUT_DIR)
-    }
-    fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
+    const finishedTeam = render(memberType);
+    console.log(finishedTeam);
+
+    fs.writeFile(outputPath, finishedTeam, "utf8", (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!');
+    });
   }
 
   createEngineer();
-
 }
 
 nodeApp();
-
-
-
-
-
-
-
-// inquirer
-//   .prompt([
-//     {
-//       name: "pizza_crust",
-//       type: "list",
-//       message: "Choose your crust:",
-//       choices: ["Thin Crust", "Stuffed Crust", "Pan"],
-//     },
-//   ])
-//   .then((answer) => {
-//     console.log(answer.pizza_crust);
-//   });
